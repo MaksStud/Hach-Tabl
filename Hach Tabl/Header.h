@@ -38,6 +38,17 @@ public:
         }
     }
 
+    bool isEmpty() {
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            if (table[i] != nullptr) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
     void insert(string key, int value) {
         int index = hash(key);
         Node* node = new Node(key, value);
@@ -63,10 +74,10 @@ public:
             }
             current = current->next;
         }
-        return -1;
+        return 0;
     }
 
-    void remove(string key) {
+    void del(string key) {
         int index = hash(key);
         Node* current = table[index];
         Node* previous = nullptr;
